@@ -1,10 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import dva from 'dva';
+import logger from 'redux-logger';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import router from "./router.js";
+
+const app = dva({onAction:logger});
+
+require('./models/index').default.forEach(key => app.model(key.default));
+app.router(router);
+app.start("#root");
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
