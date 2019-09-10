@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React from 'react'
 import { Router, Switch, Route } from 'dva/router';
 
 import App from './containers/App';

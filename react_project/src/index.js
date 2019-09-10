@@ -6,6 +6,7 @@ import router from "./router.js";
 
 const app = dva({onAction:logger});
 
+// eslint-disable-next-line no-undef
 require('./models/index').default.forEach(key => app.model(key.default));
 app.router(router);
 app.start("#root");
