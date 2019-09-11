@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
-// /* eslint-disable no-undef */
-// // 配置antd按需加载
+// 配置antd按需加载
 const path = require("path")
 const { override, fixBabelImports, addLessLoader, addWebpackAlias } = require('customize-cra');
 module.exports = override(

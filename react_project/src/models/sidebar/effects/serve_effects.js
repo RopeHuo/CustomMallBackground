@@ -1,5 +1,4 @@
 import $request from '@/services/request'
-console.log($request);
 
 export default {
 	*addServer(action, { put }) {
