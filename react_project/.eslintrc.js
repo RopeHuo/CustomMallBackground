@@ -19,5 +19,11 @@ module.exports = {
         "react"
     ],
     "rules": {
+    },
+    //定义文件中直接使用import导入不会报错的
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
     }
 };

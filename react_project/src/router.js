@@ -1,15 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { Router, Switch, Route } from 'dva/router';
+import { Router, Switch } from 'dva/router';
 
-import App from './containers/App';
-import Index from './containers/Index';
-
-export default ({ history, app }) => {
-	return <Router history={history}>
-		<Switch>
-			<Route exact path="/" component={App} />
-			<Route exact path="/index" component={Index} />
-		</Switch>
-	</Router>
+import FrontendAuth from './components/FrontendAuth/FrontendAuth'
+import { routerConfig } from './routerTable'
+function RouterConfig({ history, app }) {
+	return (
+		<Router history={history}>
+			<Switch>
+				<FrontendAuth config={routerConfig}></FrontendAuth>
+			</Switch>
+		</Router>
+	);
 }
+
+export default RouterConfig;
