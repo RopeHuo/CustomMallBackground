@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
-// 配置antd按需加载
-const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+// /* eslint-disable no-undef */
+// // 配置antd按需加载
+const path = require("path")
+const { override, fixBabelImports, addLessLoader, addWebpackAlias } = require('customize-cra');
 module.exports = override(
 	fixBabelImports('import', {
 		libraryName: 'antd',
@@ -11,4 +13,7 @@ module.exports = override(
 		javascriptEnabled: true,
 		// modifyVars: { '@primary-color': '#1DA57A' },
 	}),
+	addWebpackAlias({
+		["@"]: path.resolve(__dirname, "src/"),
+	})
 );

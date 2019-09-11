@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 'use strict';
 
 const fs = require('fs');
@@ -25,6 +26,7 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+// eslint-disable-next-line no-unused-vars
 const eslint = require('eslint');
 
 const postcssNormalize = require('postcss-normalize');
@@ -293,7 +295,7 @@ module.exports = function(webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
-        '@':paths.appSrc
+        
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
