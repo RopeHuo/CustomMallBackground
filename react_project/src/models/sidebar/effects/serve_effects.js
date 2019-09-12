@@ -1,8 +1,8 @@
-import $request from '@/services/request'
-
+import $request from '@/services/request';
+const localUrl = "http://127.0.0.1:3001";
 export default {
-	*addServer(action, { put }) {
-		const result = yield $request("http://127.0.0.1:3001/ceshi").then(data => data);
-		yield put({ "type": "add", "n": result.b })
+	*addServer(action, { put }) {		
+		const result = yield $request.GET(`${localUrl}/api`);				
+		yield put({ "type": "add", "n": result.num })
 	}
 }
