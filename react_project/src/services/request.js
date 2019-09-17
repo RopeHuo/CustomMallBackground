@@ -35,6 +35,7 @@ const parseQuery = (obj) => {
 const request = (url, method = 'get', data) => {
 	const options = {
 		method: method,   // HTTP请求方法，默认为GET
+		mode: "no-cors",
 		headers: {        // HTTP的请求头，默认为{}
 			'Content-Type': 'application/json',
 			'Authorization': localStorage.getItem("token")

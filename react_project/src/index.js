@@ -2,7 +2,7 @@ import dva from 'dva';
 import logger from 'redux-logger';
 import * as serviceWorker from './serviceWorker';
 
-import router from "./router.js";
+import router from "./route";
 
 const app = dva({onAction:logger});
 

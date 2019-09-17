@@ -13,9 +13,11 @@ class Index extends Component {
       super();
       this.state = {
          collapsed: false,
+         brnd: props.title === "Home" ? false : true
       };
+
       //拉取默认数据
-      // props.dispatch({ "type": "sidebar/get_list" });            
+      props.dispatch({ "type": "navigation/get_head_list" });            
    }
 
    onCollapse = collapsed => {
@@ -61,34 +63,40 @@ class Index extends Component {
                </Menu>
             </Header>
             <Layout>
-               <Sider
-                  style={{
-                     overflow: 'auto',
-                     height: '100vh',
-                     position: 'fixed',
-                     left: 0,
-                     top: 64
-                  }}
-                  collapsible
-                  collapsed={this.state.collapsed}
-                  onCollapse={this.onCollapse}
-               >
-                  <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-                     <SubMenu
-                        key="sub1"
-                        title={
-                           <span>
-                              <Icon type="user" />
-                              <span>User</span>
-                           </span>
-                        }
+               {
+                     this.state.brnd
+                     ? 
+                     <Sider
+                        style={{
+                           overflow: 'auto',
+                           height: '100vh',
+                           position: 'fixed',
+                           left: 0,
+                           top: 64
+                        }}
+                        collapsible
+                        collapsed={this.state.collapsed}
+                        onCollapse={this.onCollapse}
                      >
-                        <Menu.Item key="3">Tom</Menu.Item>
-                        <Menu.Item key="4">Bill</Menu.Item>
-                        <Menu.Item key="5">Alex</Menu.Item>
-                     </SubMenu>
-                  </Menu>
-               </Sider>
+                        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+                           <SubMenu
+                              key="sub1"
+                              title={
+                                 <span>
+                                    <Icon type="user" />
+                                    <span>User</span>
+                                 </span>
+                              }
+                           >
+                              <Menu.Item key="3">Tom</Menu.Item>
+                              <Menu.Item key="4">Bill</Menu.Item>
+                              <Menu.Item key="5">Alex</Menu.Item>
+                           </SubMenu>
+                        </Menu>
+                     </Sider>
+                     :
+                     null
+               }
                <Layout>
                   <Content style={{ margin: '24px 0 0 16px', overflow: 'initial' }}>
                      <div style={{

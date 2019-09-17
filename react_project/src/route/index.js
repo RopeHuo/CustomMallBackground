@@ -2,7 +2,7 @@
 import React from 'react'
 import { Router, Switch } from 'dva/router';
 
-import FrontendAuth from './components/FrontendAuth/FrontendAuth'
+import FrontendAuth from '@/components/FrontendAuth/FrontendAuth'
 import { routerConfig } from './routerTable'
 function RouterConfig({ history, app }) {
 	return (
