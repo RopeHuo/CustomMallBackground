@@ -31,8 +31,8 @@ export default class FrontendAuth extends React.Component{
 				if (targetRouterConfig) {
 					return <Route path={pathname} component={targetRouterConfig.component} />
 				} else {
-					// 如果路由不合法，重定向到 404 页面
-					return <Redirect to='/404' />
+					// 如果路由不合法，重定向到 error 页面
+					return <Redirect to='/error' />
 				}
 			}
 		} else {
@@ -40,8 +40,8 @@ export default class FrontendAuth extends React.Component{
 			if (targetRouterConfig && targetRouterConfig.auth) {
 				return <Redirect to='/login' />
 			} else {
-				// 非登陆状态下，路由不合法时，重定向至 404
-				return <Redirect to='/404' />
+				// 非登陆状态下，路由不合法时，重定向至 error
+				return <Redirect to='/error' />
 			}
 		}
 	}
