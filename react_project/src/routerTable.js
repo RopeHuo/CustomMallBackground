@@ -1,33 +1,36 @@
-import dynamic from "dva/dynamic";
+// import dynamic from "dva/dynamic";
+import Index from './pages/index/Index';
+import Login from './pages/login/Login';
+import ErrorPage from './pages/errorPage/ErrorPage';
+import Home from './components/Home/Home';
+import ProductManagement from './components/BasicData/ProductManagement';
+import OrderList from './components/PurchaseSale/OrderList';
+import WebsiteParameters from './components/SystemManagement/WebsiteParameters';
 
-/**
- * 	@param {string} path 		- 路由地址
- *	@param {class} component 	- 渲染组件,使用dynamic动态引入
- *	@param {boolean} auth 		- 是否鉴权
- */
+
 export const routerConfig = [
 	{
 		path: '/',
-		component: dynamic({
-			component: () => import('./pages/index/Index')
-		}),
-		auth: true,
-	}, {
-		path: '/basicdata',
-		component: dynamic({
-			component: () => import('./pages/basicData/BasicData')
-		}),
+		component: Index,
 		auth: true,
 	}, {
 		path: '/login',
-		component: dynamic({
-			component: () => import('./pages/login/Login')
-		}),
+		component: Login,
 	}, {
-		path: '/404',
-		component: dynamic({
-			component: () => import('./pages/errorPage/ErrorPage')
-		})
+		path: '/error',
+		component: ErrorPage
+	}, {
+		path: '/Home',
+		component: Home
+	}, {
+		path: '/BasicData',
+		component: ProductManagement
+	}, {
+		path: '/PurchaseSale',
+		component: OrderList
+	}, {
+		path: '/SystemManagement',
+		component: WebsiteParameters
 	}
 ];
 
