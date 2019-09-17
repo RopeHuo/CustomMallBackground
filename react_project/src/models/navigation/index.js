@@ -1,9 +1,9 @@
 import state from './state/state.js';
 import reducers from './reducers/reducers.js';
-import effects from './effects/effects.js'
+import effects from './effects/effects.js';
 
 export default {
-	"namespace": "sidebar", //命名空间
+	"namespace": "navigation", //命名空间
 	"state": {
 		...state
 	},
