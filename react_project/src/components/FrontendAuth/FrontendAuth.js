@@ -15,7 +15,12 @@ export default class FrontendAuth extends React.Component{
 
 		// 如果该路由不用进行权限校验，登录状态下登陆页除外,因为登陆后，无法跳转到登陆页
 		// 这部分代码，是为了在非登陆状态下，访问不需要权限校验的路由
-		const targetRouterConfig = config.find((v) => v.path === pathname);
+		const fnResult = config();
+		for (let i = 0; i < fnResult.length; i++) {
+			const element = fnResult[i];
+			
+			var targetRouterConfig = element.indexRouter === pathname;
+		}
 		//这个路由存在，且不用权限，且没有登录
 		if (targetRouterConfig && !targetRouterConfig.auth && !isLogin) {
 			const { component } = targetRouterConfig;
