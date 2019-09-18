@@ -3,12 +3,15 @@ import React from 'react'
 import { Router, Switch } from 'dva/router';
 
 import FrontendAuth from '@/components/FrontendAuth/FrontendAuth'
-import { routerConfig } from './routerTable'
+import { routerConfig, createRoute} from './routerTable'
+
 function RouterConfig({ history, app }) {
 	return (
 		<Router history={history}>
 			<Switch>
-				<FrontendAuth config={routerConfig}></FrontendAuth>
+				{/* <FrontendAuth history={history} config={routerConfig}> */}
+				<Router history={history}>{createRoute(app)}</Router>
+				{/* </FrontendAuth> */}
 			</Switch>
 		</Router>
 	);

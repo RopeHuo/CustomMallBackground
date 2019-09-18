@@ -1,32 +1,27 @@
-// import dynamic from "dva/dynamic";
-import Login from '@/pages/login/Login';
-import ErrorPage from '@/pages/errorPage/ErrorPage';
-import Home from '@/components/Home/Home';
-import ProductManagement from '@/components/BasicData/ProductManagement';
-import OrderList from '@/components/PurchaseSale/OrderList';
-import WebsiteParameters from '@/components/SystemManagement/WebsiteParameters';
+import Index from '@/pages/index/Index';
+// import ErrorPage from '@/pages/errorPage/ErrorPage';
 
+import Home from '@/components/Home/index';
+import BasicData from '@/components/BasicData/ProductManagement/index';
+import PurchaseSale from '@/components/PurchaseSale/OrderList/index';
+import SystemManagement from '@/components/SystemManagement/WebsiteParameters/index';
 
-export const routerConfig = [
+import { createRoutes } from '@/utils/core';
+
+export const routerConfig = app => [
 	{
 		path: '/',
-		component: Home,
-		auth: true,
-	}, {
-		path: '/login',
-		component: Login,
-	}, {
-		path: '/error',
-		component: ErrorPage
-	},{
-		path: '/BasicData',
-		component: ProductManagement
-	}, {
-		path: '/PurchaseSale',
-		component: OrderList
-	}, {
-		path: '/SystemManagement',
-		component: WebsiteParameters
+		title: '首页',
+		indexRoute: '/home',
+		component: Index,
+		childRoutes: [
+			Home(app),
+			BasicData(app),
+			PurchaseSale(app),
+			SystemManagement(app),
+		]
 	}
 ];
+
+export const createRoute =  app => createRoutes(app, routerConfig);
 
