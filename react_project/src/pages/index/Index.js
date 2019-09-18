@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import "./style.less";
 import React, { Component } from 'react';
+
 import { connect } from 'dva';
+import { Switch, Link } from 'dva/router';
 import { push } from 'react-router-redux';
 
 import { Layout, Menu, Icon } from 'antd';
@@ -28,6 +30,9 @@ class Index extends Component {
       this.props.dispatch(push(e.item.props.path))
    }
    render() {
+      const { routerData } = this.props;
+      const { childRoutes } = routerData;
+
       return (
          <div>
             <Header className="header"
@@ -45,21 +50,18 @@ class Index extends Component {
                   mode="horizontal" defaultSelectedKeys={[this.props.current_page]}
                   style={{ lineHeight: '64px' }}
                >
-                  <Menu.Item 
-                  onClick={this.switching_components} 
-                  path="/" key="1">后台首页</Menu.Item>
-                  
-                  <Menu.Item 
-                  onClick={this.switching_components} 
-                     path="/BasicData" key="2">基础数据</Menu.Item>
-                  
-                  <Menu.Item 
-                  onClick={this.switching_components} 
-                     path="/PurchaseSale" key="3">进销存管理</Menu.Item>
-                  
-                  <Menu.Item 
-                  onClick={this.switching_components} 
-                     path="/SystemManagement" key="11">系统管理</Menu.Item>
+                  <Menu.Item>
+                     <Link to="/home"><span>后台首页</span></Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                     <Link to="/ProductManagement"><span>基础数据</span></Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                     <Link to="/OrderList"><span>进销存管理</span></Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                     <Link to="/WebsiteParameters"><span>系统管理</span></Link>
+                  </Menu.Item>
                </Menu>
             </Header>
             <Layout>
@@ -103,7 +105,7 @@ class Index extends Component {
                         padding: this.state.collapsed ? "60px 0 0 80px" : "60px 0 0 200px",
                         background: "#fff"
                      }}>
-                        {this.props.children}
+                        <Switch>{childRoutes}</Switch>
                      </div>
                   </Content>
                </Layout>
