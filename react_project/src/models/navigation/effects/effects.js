@@ -1,10 +1,8 @@
 import $request from '@/services/request';
-const localUrl = "http://localhost:3000/api";
+const localUrl = "http://localhost:3000/api/admin-test/tp/";
 export default {
 	*get_head_list(action, { put }) {		
-		const result = yield $request.GET(`${localUrl}/v2/movie/in_theaters`);				
-		// yield put({ "type": "add", "n": result.num })
-		console.log(result);
-		
+		const result = yield $request.GET(`${localUrl}`);
+		yield put({ "type": "add", "n": result.num })
 	}
 }
