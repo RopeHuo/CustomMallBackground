@@ -51,7 +51,7 @@ class Index extends Component {
                   style={{ lineHeight: '64px' }}
                >
                   <Menu.Item>
-                     <Link to="/home"><span>后台首页</span></Link>
+                     <Link to="/Home"><span>后台首页</span></Link>
                   </Menu.Item>
                   <Menu.Item>
                      <Link to="/ProductManagement"><span>基础数据</span></Link>
