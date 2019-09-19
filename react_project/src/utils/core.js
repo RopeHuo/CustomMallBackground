@@ -5,7 +5,12 @@ import { Route, Switch, Redirect } from 'dva/router';
 import DocumentTitle from 'react-document-title';
 import assign from 'object-assign';
 import $$ from 'cmn-utils';
-import config from '@/config';
+import { FrontendAuth} from './authentication';
+
+/**
+ * HTML的title模板
+ */
+var htmlTitle = 'DDMAdmin - {title}';
 
 /**
  * 生成动态组件
@@ -46,6 +51,7 @@ export const createRoute = (app, routesConfig) => {
     indexRoute,
     title,
     exact,
+    auth,
     ...otherProps
   } = routesConfig(app);
   if (path && path !== '/') {
@@ -65,7 +71,7 @@ export const createRoute = (app, routesConfig) => {
       render: props => (
         <DocumentTitle
           title={
-            config.htmlTitle ? config.htmlTitle.replace(/{.*}/gi, title) : title
+            htmlTitle ? htmlTitle.replace(/{.*}/gi, title) : title
           }
         >
           <Comp routerData={otherProps} {...props} />
@@ -77,6 +83,9 @@ export const createRoute = (app, routesConfig) => {
     },
     exact && {
       exact: exact
+    },
+    auth && {
+      auth:auth
     }
   );
 
@@ -86,6 +95,5 @@ export const createRoute = (app, routesConfig) => {
       <Route {...routeProps} />
     ];
   }
-
-  return <Route {...routeProps} />;
+  return <Route {...routeProps} render={() => FrontendAuth(routeProps)}/>;
 };
