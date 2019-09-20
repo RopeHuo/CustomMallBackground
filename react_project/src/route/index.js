@@ -7,17 +7,13 @@ import {routerConfig,createRoute} from './routerTable'
 function RouterConfig({ history, app }) {
 	history.listen((path)=>{
 		var retrieval = [];
-		var pathArr = routerConfig();
-		for (let i = 0; i < pathArr.length; i++) {
-			const paths = pathArr[i];
-			retrieval.push(paths.path)
-			if(paths.childRoutes){
-				for (let k = 0; k < paths.childRoutes.length; k++) {
-					const childRoute = paths.childRoutes[k];
-					retrieval.push(childRoute.key)
-				}
-			}		
-		}
+		const pathArr = routerConfig();
+		const path_father = pathArr.map(item=>item.path)
+		const path_child = pathArr
+		.find(item => item.childRoutes).childRoutes
+		.map(item => item.key)
+		retrieval = retrieval.concat(path_child).concat(path_father)
+
 		if (!retrieval.includes(path.pathname)){
 			window.location.href = 'http://127.0.0.1:3000/#/error/404';
 		}

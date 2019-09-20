@@ -51,16 +51,16 @@ class Index extends Component {
                   style={{ lineHeight: '64px' }}
                >
                   <Menu.Item>
-                     <Link to="/Home"><span>后台首页</span></Link>
+                     <Link to="/home"><span>后台首页</span></Link>
                   </Menu.Item>
                   <Menu.Item>
-                     <Link to="/ProductManagement"><span>基础数据</span></Link>
+                     <Link to="/productManagement"><span>基础数据</span></Link>
                   </Menu.Item>
                   <Menu.Item>
-                     <Link to="/OrderList"><span>进销存管理</span></Link>
+                     <Link to="/orderList"><span>进销存管理</span></Link>
                   </Menu.Item>
                   <Menu.Item>
-                     <Link to="/WebsiteParameters"><span>系统管理</span></Link>
+                     <Link to="/websiteParameters"><span>系统管理</span></Link>
                   </Menu.Item>
                </Menu>
             </Header>

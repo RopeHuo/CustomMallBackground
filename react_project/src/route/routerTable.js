@@ -25,7 +25,7 @@ export const routerConfig = app => [
 	{
 		path: '/',
 		title: '首页',
-		indexRoute: '/Home',
+		indexRoute: '/home',
 		component: Index,
 		auth:true,
 		childRoutes: [
