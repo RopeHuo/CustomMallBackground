@@ -7,6 +7,8 @@ import BasicData from '@/components/BasicData/ProductManagement/index';
 import PurchaseSale from '@/components/PurchaseSale/OrderList/index';
 import SystemManagement from '@/components/SystemManagement/WebsiteParameters/index';
 
+import NotFound from '@/components/NotFound/NotFound/index';
+
 import { createRoutes } from '@/utils/core';
 
 export const routerConfig = app => [
@@ -33,6 +35,7 @@ export const routerConfig = app => [
 			BasicData(app),
 			PurchaseSale(app),
 			SystemManagement(app),
+			NotFound()
 		]
 	}
 ];

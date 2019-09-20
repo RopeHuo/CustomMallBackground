@@ -22,7 +22,7 @@ export const FrontendAuth = (routeProps) => {
 				return <Route {...routeProps} />
 			} else {
 				// 如果路由不合法，重定向到 error 页面
-				return <Redirect to="/error" />
+				return <Route {...routeProps} />
 			}
 		}
 	} else {
@@ -31,7 +31,7 @@ export const FrontendAuth = (routeProps) => {
 			return <Redirect to="/login" />
 		} else {
 			// 非登陆状态下，路由不合法时，重定向至 error
-			return <Redirect to="/error" />
+			return <Route {...routeProps} />
 		}
 	}
 }
