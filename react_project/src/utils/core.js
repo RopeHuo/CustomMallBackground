@@ -6,11 +6,7 @@ import DocumentTitle from 'react-document-title';
 import assign from 'object-assign';
 import $$ from 'cmn-utils';
 import { FrontendAuth} from './authentication';
-
-/**
- * HTML的title模板
- */
-var htmlTitle = 'DDMAdmin - {title}';
+import config from "@/config";
 
 /**
  * 生成动态组件
@@ -71,7 +67,7 @@ export const createRoute = (app, routesConfig) => {
       render: props => (
         <DocumentTitle
           title={
-            htmlTitle ? htmlTitle.replace(/{.*}/gi, title) : title
+            config.htmlTitle ? config.htmlTitle.replace(/{.*}/gi, title) : title
           }
         >
           <Comp routerData={otherProps} {...props} />

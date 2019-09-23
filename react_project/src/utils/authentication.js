@@ -15,7 +15,7 @@ export const FrontendAuth = (routeProps) => {
 	if (isLogin) {
 		// 如果是登陆状态，想要跳转到登陆，重定向到主页
 		if (routeProps.path === '/login/sign') {
-			return <Redirect to="/Home" />
+			return <Redirect to="/home" />
 		} else {
 			// 如果路由合法，就跳转到相应的路由
 			if (routeProps.path) {				
