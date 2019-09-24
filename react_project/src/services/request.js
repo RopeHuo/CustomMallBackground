@@ -13,7 +13,8 @@ function checkStatus(response) {
 	error.response = response;
 	throw error;
 }
-
+// 发送get请求时调用函数拼接字符串
+// eslint-disable-next-line no-unused-vars
 const parseQuery = (obj) => {
 	let str = ''
 	// eslint-disable-next-line no-unused-vars
@@ -32,7 +33,7 @@ const parseQuery = (obj) => {
  * @param  {object} [options] - 要传递给fetch的选项
  * @return {object}           - 包含data或者err的对象
  */
-const request = (url, method = 'get', data) => {
+const request = (url, method = 'GET', data) => {
 	const options = {
 		method: method,   // HTTP请求方法，默认为GET
 		mode: "no-cors",
@@ -42,11 +43,16 @@ const request = (url, method = 'get', data) => {
 		},
 		credentials: 'include' // 是否携带cookie，默认为omit:不携带;same-origi:同源携带、include:同源跨域都携带;
 	}
-	if (method === 'get') {
+	if (method === 'POST') {
+		let formdata = new FormData();
+		// eslint-disable-next-line no-unused-vars
+		for (const key in data) {
+			formdata.append(key, data[key]);
+		}
+		options.body = formdata
+	}else if(method === "GET"){
 		url += '?' + parseQuery(data)
-	} else {
-		options.body = JSON.stringify(data)
-	}	
+	}
 	return fetch(url, options)
 		.then(checkStatus)
 		.then(parseJSON)
@@ -55,9 +61,9 @@ const request = (url, method = 'get', data) => {
 }
 export default {
 	GET(url, data) {
-		return request(url, 'get', data)
+		return request(url, 'GET', data)
 	},
 	POST(url, data) {
-		return request(url, 'post', data)
+		return request(url, 'POST', data)
 	}
 }

@@ -12,7 +12,10 @@ export default {
 	},
 
 	// -> 配置请求地址
-	api:"http://localhost:3000/api",
+	api:{
+		"LOCAL": "http://localhost:3000/api/api",
+		"LAN":"http://localhost:3000/lanApi/admin-test/tp/public"
+	},
 
 	// -> 全局异常处理
 	exception: {
