@@ -88,7 +88,7 @@ export const createRoute = (app, routesConfig) => {
   if (indexRoute) {
     return [
       <Redirect key={path + '_redirect'} exact from={path} to={indexRoute} />,
-      <Route {...routeProps} />
+      <Route {...routeProps} render={() => FrontendAuth(routeProps)} />
     ];
   }
   return <Route {...routeProps} render={() => FrontendAuth(routeProps)}/>;
