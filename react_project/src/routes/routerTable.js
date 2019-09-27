@@ -3,8 +3,18 @@ import ErrorPage from '@/pages/errorPage/ErrorPage';
 import Login from '@/pages/login/Login';
 
 import Home from '@/components/Home/index';
-import BasicData from '@/components/BasicData/ProductManagement/index';
-import PurchaseSale from '@/components/PurchaseSale/OrderList/index';
+// 基础数据
+import ProductManagement from '@/components/BasicData/ProductManagement/index';
+import ClassifiedManagement from '@/components/BasicData/ClassifiedManagement/index';
+import BrandManagement from '@/components/BasicData/BrandManagement/index';
+import SeriesManagement from '@/components/BasicData/SeriesManagement/index';
+import SpecificationManagement from '@/components/BasicData/SpecificationManagement/index';
+// 进销存管理
+import OrderList from '@/components/PurchaseSale/OrderList/index';
+import AfterSalesOrder from '@/components/PurchaseSale/AfterSalesOrder/index';
+import OrderGoods from '@/components/PurchaseSale/OrderGoods/index';
+import ReceivingGoods from '@/components/PurchaseSale/ReceivingGoods/index';
+
 import SystemManagement from '@/components/SystemManagement/WebsiteParameters/index';
 
 import NotFound from '@/components/NotFound/NotFound/index';
@@ -32,8 +42,18 @@ export const routerConfig = app => [
 		auth:true,
 		childRoutes: [
 			Home(app),
-			BasicData(app),
-			PurchaseSale(app),
+	
+			ProductManagement(app),
+			ClassifiedManagement(app),
+			BrandManagement(app),
+			SeriesManagement(app),
+			SpecificationManagement(app),
+
+			OrderList(app),
+			AfterSalesOrder(app),
+			OrderGoods(app),
+			ReceivingGoods(app),
+
 			SystemManagement(app),
 			NotFound()
 		]
