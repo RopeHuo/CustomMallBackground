@@ -15,7 +15,7 @@ class Index extends Component {
       super();
       this.state = {
          collapsed: false,
-      
+         current:props.location.pathname,
       };
 
       //拉取默认数据
@@ -25,12 +25,36 @@ class Index extends Component {
    onCollapse = collapsed => {
       this.setState({ collapsed });
    };
+   handleClick = e => {
+      console.log(e);
+      
+      // this.setState({
+      //    current: e.key,
+      // });
+   };
 
    router_jump = path =>{
       this.props.dispatch(push(path))    
       //请求侧边栏数据
       this.side_edge_navigation(path)
    };
+   //查找childer路由是否存在该项
+   childer_is_exist = (sidebar_obj,path) =>{
+      for (let i = 0; i < sidebar_obj.length; i++) {
+         if (sidebar_obj[i].childer) {
+            for (let k = 0; k < sidebar_obj[i].childer.length; k++) {
+               for (let r = 0; r < sidebar_obj[i].childer[k].childer.length; r++) {
+                  if (sidebar_obj[i].childer[k].childer[r].router === path) {
+                     return {
+                        item:sidebar_obj[i],
+                        sort: sidebar_obj[i].childer[k].sort
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
 
    head_navigation = () => {
       let dom_arr = [];
@@ -49,10 +73,15 @@ class Index extends Component {
 
    side_edge_navigation = (path) => {
       let dom_arr = [];
+      const sidebar_obj = this.props.head_navigation_list
       //是否是首页，并且找到返回数据中的这条路由
-      let side_edge_navigation_item = this.props.head_navigation_list
-      .filter(item => item.router === path && path !== "/home" )[0];
-      
+      const result = sidebar_obj.filter(item => item.router === path && path !== "/home")[0];
+      //如果在一级目录就找到就直接返回，没有找到再去子目录查找
+      let side_edge_navigation_item = null;
+      if (result){side_edge_navigation_item = result}else{
+         let obj = this.childer_is_exist(sidebar_obj, path);
+         side_edge_navigation_item = obj ? obj.item : null;
+      }
       if (side_edge_navigation_item){         
          for (let i = 0; i < side_edge_navigation_item.childer.length; i++) {
             //判断是否有下拉框
@@ -69,13 +98,19 @@ class Index extends Component {
                >
                   {
                      side_edge_navigation_item.childer[i].childer.map(item => {
-                        return <Menu.Item key={item.id}>{item.title}</Menu.Item>
+                        return <Menu.Item 
+                        key={item.router}
+                        onClick={() => { this.router_jump(item.router) }}
+                        >{item.title}</Menu.Item>
                      })
                   }
                </SubMenu>)
             : dom_arr.push(
                      side_edge_navigation_item.childer[i].childer.map(item => {
-                        return <Menu.Item key={item.id}>{item.title}</Menu.Item>
+                        return <Menu.Item 
+                        key={item.router}
+                        onClick={() => { this.router_jump(item.router) }}
+                        >{item.title}</Menu.Item>
                      })
                )
 
@@ -89,6 +124,13 @@ class Index extends Component {
       const { routerData } = this.props;
       const { childRoutes } = routerData;
       const path_name = this.props.location.pathname;
+      // 这里是为了方便得到切换左侧栏时header标签栏选中情况
+      let selectedKeys = this.childer_is_exist(this.props.head_navigation_list, path_name);
+      let router = null;//侧边栏选择不会影响header栏
+      if (selectedKeys) { if (selectedKeys.item.router) router = selectedKeys.item.router}
+      let sort = "0";
+      if (selectedKeys) { if (selectedKeys.sort) sort = selectedKeys.sort }
+      
       return (
          <div>
             {
@@ -108,7 +150,7 @@ class Index extends Component {
                         <Menu
                            theme="dark"
                            mode="horizontal" 
-                           selectedKeys={[path_name]}
+                           selectedKeys={[router]}
                            style={{ lineHeight: '64px' }}
                         >
                            {this.head_navigation()}
@@ -130,7 +172,10 @@ class Index extends Component {
                                  collapsed={this.state.collapsed}
                                  onCollapse={this.onCollapse}
                               >
-                                 <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+                                 <Menu theme="dark" mode="inline" defaultSelectedKeys={[path_name]}
+                                 selectedKeys={[path_name]}
+                                 onClick={this.handleClick}
+                                 >
                                     {this.side_edge_navigation(path_name)}
                                  </Menu>
                               </Sider>
