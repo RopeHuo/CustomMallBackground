@@ -4,7 +4,7 @@ import { Route, Redirect } from 'dva/router';
 
 export const FrontendAuth = (routeProps) => {	
 	//写测试token方便开发
-	localStorage.setItem('token', "asd");
+	localStorage.setItem('token', "ads");
 	//如果token存在就判断正确;
 	const isLogin = localStorage.getItem('token');
 
