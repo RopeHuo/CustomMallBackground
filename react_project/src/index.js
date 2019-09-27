@@ -14,6 +14,13 @@ app.use({ onError: config.exception.global });
 // -> 获取loading状态
 app.use(createLoading());
 
+// 使用mock数据
+// eslint-disable-next-line no-undef
+// require('./mocks');
+// if (process.env.NODE_ENV === 'development') {
+//   require('./__mocks__');
+// }
+
 // -> 加载多个model
 // eslint-disable-next-line no-undef
 require('./models/index').default.forEach(key => app.model(key.default));
