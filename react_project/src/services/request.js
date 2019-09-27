@@ -36,14 +36,12 @@ const parseQuery = (obj) => {
 const request = (url, method = 'GET', data) => {
 	const options = {
 		method: method,   // HTTP请求方法，默认为GET
-		mode: "no-cors",
-		headers: {        // HTTP的请求头，默认为{}
-			'Content-Type': 'application/json',
-			'Authorization': localStorage.getItem("token")
+		headers: {
+			"Authorization": "1115c49e61749cfb3008ae6a3ba24cb7"//1115c49e61749cfb3008ae6a3ba24cb7
 		},
 		credentials: 'include' // 是否携带cookie，默认为omit:不携带;same-origi:同源携带、include:同源跨域都携带;
 	}
-	if (method === 'POST') {
+	if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
 		let formdata = new FormData();
 		// eslint-disable-next-line no-unused-vars
 		for (const key in data) {
@@ -51,7 +49,7 @@ const request = (url, method = 'GET', data) => {
 		}
 		options.body = formdata
 	}else if(method === "GET"){
-		url += '?' + parseQuery(data)
+		// url += '?' + parseQuery(data)
 	}
 	return fetch(url, options)
 		.then(checkStatus)
@@ -65,5 +63,11 @@ export default {
 	},
 	POST(url, data) {
 		return request(url, 'POST', data)
+	},
+	PUT(url,data){
+		return request(url, 'PUT', data)
+	},
+	DELETE(url, data) {
+		return request(url, 'DELETE', data)
 	}
 }
