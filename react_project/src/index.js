@@ -15,11 +15,10 @@ app.use({ onError: config.exception.global });
 app.use(createLoading());
 
 // 使用mock数据
+if (process.env.NODE_ENV === 'development') {
 // eslint-disable-next-line no-undef
-// require('./mocks');
-// if (process.env.NODE_ENV === 'development') {
-//   require('./__mocks__');
-// }
+  require('./mocks');
+}
 
 // -> 加载多个model
 // eslint-disable-next-line no-undef
