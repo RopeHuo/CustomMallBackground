@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export default ({ fetchMock, delay, mock, toSuccess, toError }) => {
   return {
     '/api/charts/bar1': options => {

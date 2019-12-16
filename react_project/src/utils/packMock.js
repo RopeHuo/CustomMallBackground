@@ -1,5 +1,3 @@
-// http://www.wheresrhys.co.uk/fetch-mock/api
-// http://mockjs.com/
 import fetchMock from 'fetch-mock';
 import $$ from 'cmn-utils';
 import Mock from 'mockjs';
