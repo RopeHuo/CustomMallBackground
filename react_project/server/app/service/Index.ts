@@ -6,10 +6,10 @@ import navList from '../../mocks/localData/navList';
  */
 export default class Test extends Service {
 
-  public async sayHi() {
+	public async navList() {
     // 读取数据库资料
     const user = await this.app.mysql.get('app_adv', { id: '6' });
-    // console.log(user);
+    console.log(user);
     return navList
   }
 }
