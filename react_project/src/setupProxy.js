@@ -5,7 +5,7 @@ module.exports = function (app) {
 	// 接口代理本地
 	app.use(
 		proxy('/api', {
-			target: 'http://127.0.0.1:7001/',
+			target: 'http://127.0.0.1:7002/',
 			changeOrigin: true,
 			pathRewrite: {
 				'^/api': ''

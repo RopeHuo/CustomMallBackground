@@ -3,11 +3,15 @@
 
 import 'egg';
 import ExportIndexHome from '../../../app/controller/index/home';
+import ExportLoginLogin from '../../../app/controller/login/login';
 
 declare module 'egg' {
   interface IController {
     index: {
       home: ExportIndexHome;
+    }
+    login: {
+      login: ExportLoginLogin;
     }
   }
 }
