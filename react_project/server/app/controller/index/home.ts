@@ -11,7 +11,7 @@ export default class HomeController extends Controller {
 	 * @Router GET /v1/navigation/list
 	 * @Request query string id eg:200032234567 列表ID
 	 * @Request header string access_token eg:ADWSKDKSALKLWE5645465ASDSAD 标识
-	 * @Response 200 baseResponse ok
+	 * @Response 200 baseResponse 默认返回结果
 	 */
 	public async index() {
 		const { ctx } = this;
