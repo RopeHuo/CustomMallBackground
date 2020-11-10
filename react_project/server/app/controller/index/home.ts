@@ -20,7 +20,7 @@ export default class HomeController extends Controller {
 	 * @Request header string access_token eg:ADWSKDKSALKLWE5645465ASDSAD 标识
 	 * @Response 200 v1NavigationIndexRes 默认返回结果
 	 */
-	public async index() {
+	public async list() {
 		const { ctx } = this;
 		ctx.body = await ctx.service.index.navList();
 	}
