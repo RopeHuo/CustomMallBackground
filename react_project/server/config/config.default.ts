@@ -1,5 +1,5 @@
 import { EggAppConfig, EggAppInfo, PowerPartial } from "egg";
-
+const path = require('path');
 export default (appInfo: EggAppInfo) => {
 	const config = {} as PowerPartial<EggAppConfig>;
 
@@ -9,7 +9,10 @@ export default (appInfo: EggAppInfo) => {
 
 	// add your egg config in here
 	config.middleware = [];
-
+	config.static = {
+		prefix:'/public',
+		dir:path.join(appInfo.baseDir,'/app/public')
+	};
 	// egg-swagger-doc 配置信息
 	config.swaggerdoc = {
 		dirScanner: "./app/controller",
