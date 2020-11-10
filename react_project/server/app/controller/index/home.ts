@@ -5,7 +5,7 @@ import { Controller } from "egg";
  */
 export default class HomeController extends Controller {
 	/**
-	 * @Summary 新增导航接口
+	 * @Summary 新增导航
 	 * @Router POST /v1/navigation/create
 	 * @Request body v1NavigationCreateReq *body
 	 * @Response 200 v1NavigationCreateRes 创建成功
@@ -13,7 +13,7 @@ export default class HomeController extends Controller {
 	public async create() {}
 	// * @Deprecated
 	/**
-	 * @Summary 导航列表接口
+	 * @Summary 导航列表
 	 * @Description 测试备注信息
 	 * @Router GET /v1/navigation/{id}/list
 	 * @Request path integer *id eg:200032234567 列表ID
