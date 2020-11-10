@@ -14,8 +14,8 @@ export default (appInfo: EggAppInfo) => {
 	config.swaggerdoc = {
 		dirScanner: "./app/controller",
 		apiInfo: {
-			title: "egg-swagger",
-			description: "swagger-ui for egg",
+			title: "Rope后台项目Api文档",
+			description: "前端采用React，后端采用Egg",
 			version: "1.0.0"
 		},
 		schemes: ["http", "https"],
