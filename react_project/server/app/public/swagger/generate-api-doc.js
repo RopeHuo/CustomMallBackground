@@ -6,12 +6,12 @@ const path = require("path");
 http.get("http://127.0.0.1:7001/swagger-doc", resp => {
 	let data = "";
 
-	// A chunk of data has been recieved.
+	// 已经接收到数据
 	resp.on("data", chunk => {
 		data += chunk;
 	});
 
-	// The whole response has been received. Print out the result.
+	// 请求结束执行
 	resp.on("end", () => {
 		// 格式化json
 		let text = data;
@@ -22,12 +22,12 @@ http.get("http://127.0.0.1:7001/swagger-doc", resp => {
 		// 写入文件
 		fs.writeFile(file, text, function(err) {
 			if (err) {
-				console.log(err);
+				console.log("文件创建失败!" + err);
 			} else {
 				console.log("文件创建成功~" + file);
 			}
 		});
 	});
 }).on("error", err => {
-	console.log("Error: " + err.message);
+	console.log("接口请求失败! " + err.message);
 });
