@@ -13,6 +13,13 @@ export default (appInfo: EggAppInfo) => {
 		prefix:'/public',
 		dir:path.join(appInfo.baseDir,'/app/public')
 	};
+	// 跨域配置
+	config.cors = {
+		// 表示允许的源
+		origin: "*",
+		// 表示允许的http请求方式
+		allowMethods: "GET,HEAD,PUT,POST,DELETE,PATCH"
+	};
 	// egg-swagger-doc 配置信息
 	config.swaggerdoc = {
 		dirScanner: "./app/controller",

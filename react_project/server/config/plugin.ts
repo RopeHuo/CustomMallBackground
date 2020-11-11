@@ -12,6 +12,11 @@ plugin.swaggerdoc = {
 	enable: true,
 	package: "egg-swagger-doc"
 };
+// 配置跨域插件
+plugin.cors = {
+	enable: true,
+	package: "egg-cors"
+};
 // plugin.mysql={
 //   enable: true,
 //   package: 'egg-mysql',
