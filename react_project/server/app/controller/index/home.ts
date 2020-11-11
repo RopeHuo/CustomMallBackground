@@ -14,7 +14,7 @@ export default class HomeController extends Controller {
 	// * @Deprecated
 	/**
 	 * @Summary 导航列表
-	 * @Description 测试备注信息
+	 * @Description 测试备注
 	 * @Router GET /v1/navigation/{id}/list
 	 * @Request path integer *id eg:200032234567 列表ID
 	 * @Request header string access_token eg:ADWSKDKSALKLWE5645465ASDSAD 标识
