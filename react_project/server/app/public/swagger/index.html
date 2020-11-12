@@ -65,6 +65,29 @@
 				});
 				// End Swagger UI call region
 
+				/*********************** 处理搜索的form标签 start ******************************/
+				const topbarWrapperElm = document.getElementsByClassName(
+					"topbar-wrapper"
+				)[0];
+				let _res = topbarWrapperElm.innerHTML.replace(/<form/g, "<div");
+				let _result = _res.replace(/<\/form>/g, "</div>");
+				topbarWrapperElm.innerHTML = _result;
+				const downloadUrlInputElm = document.getElementsByClassName(
+					"download-url-input"
+				)[0]
+				downloadUrlInputElm.disabled = false;
+				/*********************** 处理搜索的form标签 end ******************************/
+
+				/*********************** 处理搜索按钮 start ******************************/
+				const downloadUrlBtnElm = document.getElementsByClassName(
+					"download-url-button"
+				)[0];
+				downloadUrlBtnElm.onclick = function(){
+					console.log(downloadUrlInputElm.value)
+					console.log(window.location);
+					console.log(window.location.href);
+				};
+				/*********************** 处理搜索按钮 end ******************************/
 				window.ui = ui;
 			};
 		</script>
