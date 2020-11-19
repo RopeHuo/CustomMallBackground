@@ -13,7 +13,7 @@ jobs:
         persist-credentials: false
     - name: Install and Build
       run: |
-        cd /react_project
+        pwd
         npm install
         npm run-script build
     - name: Deploy
