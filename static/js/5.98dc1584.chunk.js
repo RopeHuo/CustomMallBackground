@@ -1,0 +1,2 @@
+(this["webpackJsonpmy-app"]=this["webpackJsonpmy-app"]||[]).push([[5],{482:function(t,e,n){"use strict";n.r(e),n.d(e,"default",(function(){return s}));var a=n(41),c=n(42),r=n(44),u=n(43),i=n(45),p=n(0),o=n.n(p),s=function(t){function e(){return Object(a.a)(this,e),Object(r.a)(this,Object(u.a)(e).apply(this,arguments))}return Object(i.a)(e,t),Object(c.a)(e,[{key:"render",value:function(){return o.a.createElement("div",null,o.a.createElement("h1",null,"ProductManagement\u9875\u9762"))}}]),e}(p.Component)}}]);
+//# sourceMappingURL=5.98dc1584.chunk.js.map
