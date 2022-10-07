@@ -1,7 +1,7 @@
-#一个可自定义商城后台项目
+# 一个中后台基础功能搭建系统
 
-前端开发框架采用dva，UI框架采用antd，后端使用egg+ts，数据库使用mysql
-使用了 Github-Actions 功能
+前端开发框架采用DvaJS，UI框架采用Ant Design，后端使用EggJS+TypeScript，数据库使用MySQL
+使用了 Github Actions 功能
 
 ```├── README.md
 └── react_project
